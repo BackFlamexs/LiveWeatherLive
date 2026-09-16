@@ -2,13 +2,25 @@ import sunny from '../assets/images/sunny.png'
 import { useState } from 'react'
 
 const WheatherApp = () => {
-
+    // GERENCIAMENTO DE CONTROLE E DADOS E ACOES 
     const [location, setLocation] = useState('')
 
     const handleInputChanges = (e) => {
         setLocation(e.target.value)
       }
 
+      const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+          search(location)
+        }
+      }
+
+      const search = (city) => {
+        console.log('Searching for:', city)
+      }
+
+
+// ELEMENTOS QUE SERAO RENDERIZADOS
   return (
     <div className="container">
       <div className="weather-app">
@@ -24,6 +36,7 @@ const WheatherApp = () => {
               placeholder="Enter Location"
               value={location}
               onChange={handleInputChanges}
+              onKeyDown={handleKeyDown}
             />
             <i className="fa-solid fa-magnifying-glass"></i>
           </div>
